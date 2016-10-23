@@ -11,10 +11,8 @@ import com.vittach.enums.SpecializationEnum;
  */
 public class Request {
     private Scanner sc;
-    private int countOfDiagnos; // random
     private ArrayList<Doctors> doctors;
     private ArrayList<Patients> patients;
-    private int countOfPatientsToDoctors;
     private Random r = new Random(System.currentTimeMillis());
 
     Request() {
@@ -24,6 +22,7 @@ public class Request {
     }
 
     public void generatePatient() {
+        int countOfDiagnos;
         String lastName;
         String firstName;
         String birthsday;
@@ -58,6 +57,7 @@ public class Request {
         String birthsday;
         Patients patient;
         String patronymic;
+        int countOfPatientsToDoctors;
 
         System.out.print("Input doctor last name: ");
         lastName = sc.nextLine();
@@ -132,7 +132,7 @@ public class Request {
                 && pt.getPatronymic().equals(patronymic)).forEach(pt -> {
             ArrayList<PatientsDate> doctorsPatient = pt.getPatient();
             for(PatientsDate pa: doctorsPatient) {
-                if(pa.getDate().equals(date)==true)
+                if(pa.getDate().equals(date))
                     System.out.println("\t"+ pa.getPatient());
             }
         });
